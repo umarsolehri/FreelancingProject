@@ -143,7 +143,9 @@ namespace FFYP.Controllers
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    ViewBag.Message = "You have signed up successfully check you email for confirmation";
+                    return View();
+                    //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
