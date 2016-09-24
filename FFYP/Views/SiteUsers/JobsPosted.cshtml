@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Project>
+@{
+    ViewBag.Title = "Projects Posted";
+}
+
+
+<div class="compny-profile">
+    @{ Html.RenderAction("UserNameDisplay", "SiteUsers"); }
+    <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+        <div class="container">
+            <div class="row">
+                @{ Html.RenderPartial("_Partialheadbar"); }
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div class="compny-profile">
+                            <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div>
+                                                <div id="jobs">
+                                                    <div class="listing listing-1">
+                                                        <div class="listing-section">
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                //{
+                                                                //    item.Description = Server.HtmlDecode(item.Description);
+                                                                //}
+                                                                <div class="listing-ver-3">
+                                                                    <div class="listing-heading">
+                                                                        <h5>@item.Title</h5>
+                                                                        <ul class="bookmark list-inline">
+                                                                            <li><a href="#">Posted on <i class="fa fa-clock-o"> @item.PostedDate.ToString("d")</i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="listing-inner">
+                                                                        <div class="listing-content">
+                                                                            <h6 class="title-company">Posted by: <i class="fa fa-user"></i> @item.SiteUser.FullName</h6>
+                                                                            <span class="location"> <i class="fa fa-map-marker"></i> @item.Location </span> <span class="time"><i class="fa fa-clock-o"></i> @item.Duration </span>
+                                                                            @*@if (item.Description.AsEnumerable().Count() >= 60)
+                                                                            {*@
+                                                                                <p>
+                                                                                    @Html.Raw(HttpUtility.HtmlDecode(item.Description))
+                                                                                    <a href="@Url.Action("BidingsList", "Bidings", new { id = item.ProjectID })">read bids</a>
+                                                                                </p>
+                                                                            @*}
+                                                                            else
+                                                                            {
+                                                                                <p>
+                                                                                    @item.Description
+                                                                                    <a href="@Url.Action("BidingsList", "Bidings", new { id = item.ProjectID })">read bids</a>
+                                                                                </p>
+                                                                            }*@
+                                                                            <h6 class="title-tags">Skills required:</h6>
+                                                                            <ul class="tags list-inline">
+                                                                                @foreach (var skill in item.SkillsRequired.ToString().Split(','))
+                                                                                {
+                                                                                    <li><a href="">@skill</a></li>
+                                                                                }
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

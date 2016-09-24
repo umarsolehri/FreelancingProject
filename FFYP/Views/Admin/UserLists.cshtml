@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UserViewModels>
+@{
+    ViewBag.Title = "UserLists";
+    int no = 0;
+}
+
+
+<div class="compny-profile">
+    @{ Html.RenderAction("UserNameDisplay", "SiteUsers"); }
+    <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+        <div class="container">
+            <div class="row">
+                @{ Html.RenderPartial("_Partialheadbar"); }
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div id="profile" class="tab-pane fade in active">
+                            <div class="row">
+                                <section class="demo-section">
+                                    <div class="container">
+                                        <table class="table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Role</th>
+                                                    <th><span><i class="fa fa-remove"></i></span></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    @Html.HiddenFor(model => item.Id)
+                                                    {
+                                                        no++;
+                                                    }
+                                                    <tr>
+                                                        <td>@no</td>
+                                                        <td>@item.Name</td>
+                                                        <td>@item.Email</td>
+                                                        <td>@item.Role</td>
+                                                        <th><a href="@Url.Action("Deleteuser", "Admin", new { id = item.Id})"><span><i class="fa fa-remove"></i></span></a></th>
+                                                    </tr>
+                                                }
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

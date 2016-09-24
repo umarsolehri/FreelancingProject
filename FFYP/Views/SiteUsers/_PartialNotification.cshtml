@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Biding>
+<li id="rep">
+    <a><span class="noti"><i class="fa fa-bell"></i></span></a>
+    <div class="noti-content">
+        <div class="noti-top-arrow"></div>
+        <ul id="notiContent">
+            @foreach (var item in Model)
+            {
+                <li>Bid on : @item.Project.Title by : @item.Project.SiteUser.FullName </li>
+            }
+        </ul>
+    </div>
+</li>

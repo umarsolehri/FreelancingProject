@@ -1,0 +1,59 @@
+﻿@model BidViewModels
+@{
+    ViewBag.Title = "Submit Purposal";
+}
+
+<div class="compny-profile">
+    <div class="profile-company-content" data-bg-color="f5f5f5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-push-1">
+                    <div class="tab-content">
+
+                        <div id="profile" class="tab-pane fade in active">
+                            <div class="profile-main">
+                                <h3>@Model.ProTitle</h3>
+                                <div class="profile-in">
+                                    <p>
+                                        @Html.Raw(Model.ProDescription)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-push-1">
+                    <div class="tab-content">
+                        <div>
+                            <div class="profile-main">
+                                <h3>Cover Letter</h3>
+                                <div class="profile-in">
+                                    @using (Html.BeginForm("SubmitPurposal", "Bidings",FormMethod.Post))
+                                    {
+                                        @Html.HiddenFor(model => model.ProjectID)
+
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        @Html.TextAreaFor(model => model.BidDescription, 4, 7, new { @placeholder = "Create your cover letter" })
+                                        <br />
+                                        <button type="submit" style="margin-left:80px; border:none; background:#0099ff;
+                                                    border-radius:30px;padding: 8px 30px; color: #fff; float:left;
+                                                    font-size: 14px; transition: all 0.3s;">
+                                            Submit Purposal
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        CKEDITOR.replace('BidDescription');
+    }
+</script>

@@ -1,0 +1,62 @@
+﻿@model  IEnumerable<JobViewModels>
+@{
+    ViewBag.Title = "Jobs";
+}
+
+
+
+
+<div class="compny-profile">
+    @{ Html.RenderAction("UserNameDisplay", "SiteUsers"); }
+    <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+        <div class="container">
+            <div class="row">
+                @{ Html.RenderPartial("_Partialheadbar"); }
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div id="profile" class="tab-pane fade in active">
+                            @foreach (var item in Model)
+                            {
+                                <div class="row">
+                                    <div class="col-md-10 col-md-push-1">
+                                        <div class="sidebar">
+                                            <h5 class="main-title">job Details</h5>
+                                            <div class="sidebar-information">
+                                                <ul class="single-category">
+                                                    <li class="row">
+                                                        <h6 class="title col-xs-6">Owner Name</h6>
+                                                        <span class="subtitle col-xs-6">@item.Name</span>
+                                                    </li>
+                                                    <li class="row">
+                                                        <h6 class="title col-xs-6">Email</h6>
+                                                        <span class="subtitle col-xs-6"><a>@item.Email</a></span>
+                                                    </li>
+                                                    <li class="row">
+                                                        <h6 class="title col-xs-6">Contact #</h6>
+                                                        <span class="subtitle col-xs-6">@item.ContactNumber</span>
+                                                    </li>
+                                                    <li class="row">
+                                                        <h6 class="title col-xs-6">Location</h6>
+                                                        <span class="subtitle col-xs-6">@item.City</span>
+                                                    </li>
+                                                    <li class="row">
+                                                        <h6 class="title col-xs-6">Project Title</h6>
+                                                        <span class="subtitle col-xs-6">@item.ProjectTitle</span>
+                                                    </li>
+                                                    <li class="row">
+                                                        <h6 class="title col-xs-6">Project Description</h6>
+                                                        <span class="subtitle col-xs-6"><a href="@Url.Action("ProDetails", "Projects", new { id = item.Id })">Read Details</a></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

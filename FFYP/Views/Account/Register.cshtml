@@ -1,0 +1,53 @@
+﻿@model RegisterViewModel
+@{
+    ViewBag.Title = "Sign Up";
+}
+<div class="home-pro">
+    <div class="banr-head">
+        <div class="container">
+            <div class="row">
+                <div class="logreg">
+                    <div class="login-sec">
+                        <div class="uou-tabs">
+                            <ul class="tabs">
+                                <li class="active"><a href="#log-in">Get Register Yourself</a></li>
+                            </ul>
+                            <div class="content">
+                                <div id="log-in" class="active">
+                                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                        @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "First Name" })
+                                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Last Name" })
+                                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                        @Html.PasswordFor(model => model.Password, new { @placeholder = "Password" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        @Html.PasswordFor(model => model.ConfirmPassword, new { @placeholder = "Confirm Password" })
+                                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+
+
+                                        <br />
+                                        <button type="submit">Sign Up</button>
+                                        <div class="forget">Already Have Account? <a href="@Url.Action("Login","Account")">Click Here</a></div>
+                                    }
+                                </div>
+                                @*<div id="forget">
+                                    <form>
+                                        <input type="email" placeholder="Email Address">
+                                        <button type="submit">Login</button>
+                                    </form>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
