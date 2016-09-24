@@ -111,7 +111,7 @@ namespace FFYP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BidingID,BidingDate,Description,Status,ProjectID")] Biding biding)
+        public ActionResult Create(Biding biding)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +147,7 @@ namespace FFYP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BidingID,BidingDate,Description,Status,ProjectID")] Biding biding)
+        public ActionResult Edit(Biding biding)
         {
             if (ModelState.IsValid)
             {

@@ -14,57 +14,6 @@
     <link rel="stylesheet" href="~/Content/css/own.css" />
     <link rel="stylesheet" href="~/Scripts/ckeditor/contents.css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <style>
-        .noti-content {
-            position: fixed;
-            right: 100px;
-            background: #f5deb3;
-            border-radius: 4px;
-            top: 47px;
-            width: 250px;
-            display: none;
-            border: 1px solid #808080;
-        }
-
-        ul#notiContent {
-            max-height: 200px;
-            overflow: auto;
-            padding: 0px;
-            margin: 0px;
-            padding-left: 20px;
-        }
-
-            ul#notiContent li {
-                margin: 3px;
-                padding: 6px;
-                background: #fff;
-                list-style: none;
-            }
-
-        .noti-top-arrow {
-            border-color: transparent;
-            border-bottom-color: #f5deb3;
-            border-right-style: dashed dashed solid;
-            border-width: 0 8.5px 8.5px;
-            position: absolute;
-            right: 32px;
-            top: -8px;
-        }
-
-        /*span.noti {
-                color: inherit;
-                margin: 15px;
-                position: fixed;
-                right: 100px;
-                font-size: 18px;
-                cursor: pointer;
-            }*/
-
-        /*span.count {
-                position: relative;
-                top: -3px;
-            }*/
-    </style>
 </head>
 
 <body>
@@ -84,13 +33,6 @@
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
-                            @*<li id="rep">
-                                <a><span class="noti"><i class="fa fa-bell"></i></span></a>
-                                <div class="noti-content">
-                                    <div class="noti-top-arrow"></div>
-                                    <ul id="notiContent"></ul>
-                                </div>
-                            </li>*@
                             if (User.IsInRole("user"))
                             {
                                 <li><a href="@Url.Action("Index", "SiteUsers")">Account</a></li>
@@ -109,7 +51,6 @@
         <div class="box-shadow-for-ui">
             <div class="uou-block-2b">
                 <div class="container">
-                    @*<a href="@Url.Action("Index","Home")" class="logo"><img src="~/Content/images/logo.png" alt=""></a> <a href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>*@
                     <nav class="nav">
                         <ul class="sf-menu">
                             <li class="active"><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
@@ -136,101 +77,7 @@
     <script src="~/SignalR/Hubs"></script>
 
 
-    <script>
-        $(document).ready(function () {
-            var notifications = $.connection.notificationHub;
-            //click on notification icon
-            $('.noti').click(function (e) {
-                //e.stopPropagation();
-                $('.noti-content').show();
-                //var count = 0;
-                //count = parseInt($('.count').html()) || 0;
-                //only load notification if already not loaded
-                //if (count > 0) {
-                updateNotifiaction();
-                //}
-                //else {
-                //    $('.count', this).html('$nbsp');
-                //}
-            })
 
-
-            //hide notification
-            $('html').click(function () {
-                $('.noti-content').hide();
-            })
-
-            //update notifications
-            function updateNotifiaction() {
-                $('#notiContent').empty();
-                $('#notiContent').append($('<li>Loading ....</li>'));
-
-                $.ajax({
-                    url: '@Url.Action("GetBidings","SiteUsers")',
-                    type: 'GET',
-                    contentType: 'json',
-                    dataType: 'json'
-                }).success(function (response) {
-                    $('#notiContent').empty();
-                    if (response.length == 0) {
-                        $('#notiContent').append($('<li>No data available</li>'));
-                    }
-                    $.each(response, function (index, value) {
-                        $('#rep').html(response)
-                        //$('#notiContent').append($('<li>Bid made on : ' + value.Status + 'by (' + + ') </li>'));
-                    })
-                }).error(function (error) {
-                    console.log(error);
-                });
-            }
-            @*function updateNotifiaction() {
-                $('#notiContent').empty();
-                $('#notiContent').append($('<li>Loading ....</li>'));
-
-                $.ajax({
-                    url: '@Url.Action("GetBidings","SiteUsers")',
-                    type: 'GET',
-                    contentType: 'json',
-                    dataType: 'json',
-                    success: function (response) {
-                        $('#notiContent').empty();
-                        if (response.length == 0) {
-                            $('#notiContent').append($('<li>No data available</li>'));
-                        }
-                        $.each(response, function (index, value) {
-                            $('#rep').html(response);
-                            //$('#notiContent').append($('<li>Bid made on : ' + value.Status + 'by (' + + ') </li>'));
-                        })
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                })
-            }*@
-            //update count
-            function updateNotificationCount() {
-                var count = 0;
-                count = parseInt($('.count').html()) || 0;
-                count++;
-                $('.count').html(count);
-            }
-
-
-            //signalR js code for start hub and send recieve notification
-
-
-            $.connection.hub.start().done(function () {
-                console.log('Notification Hub started');
-            })
-
-            //signalR method for push server message to client
-            notifications.client.notifyBid = function (message) {
-                if (message && message.toLowerCase() == "added") {
-                    updateNotificationCount();
-                }
-            }
-        });
-    </script>
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
     <script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>

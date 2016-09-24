@@ -14,13 +14,13 @@ using PagedList.EntityFramework;
 
 namespace FFYP.Controllers
 {
-    //public static class StringExtensions
-    //{
-    //    public static string ToSystemString(this IEnumerable<char> source)
-    //    {
-    //        return new string(source.ToArray());
-    //    }
-    //}
+    public static class StringExtensions
+    {
+        public static string ToSystemString(this IEnumerable<char> source)
+        {
+            return new string(source.ToArray());
+        }
+    }
     [Authorize]
     public class ProjectsController : BaseSecurityController
     {

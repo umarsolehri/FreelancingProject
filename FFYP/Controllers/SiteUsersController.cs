@@ -72,10 +72,10 @@ namespace FFYP.Controllers
                             var delpath = Path.Combine(Server.MapPath(siteUser.imagepath));
                             System.IO.File.Delete(delpath);
                         }
-                        var path = Path.Combine(Server.MapPath("~/Content/UploadImages/"), filename);
+                        var path = Path.Combine(Server.MapPath("~/Content/images/"), filename);
                         image.SaveAs(path);
                         siteUser.ImageName = filename;
-                        siteUser.imagepath = "~/Content/UploadImages/" + filename;
+                        siteUser.imagepath = "~/Content/images/" + filename;
 
                         db.Entry(siteUser).State = EntityState.Modified;
                         await db.SaveChangesAsync();
@@ -96,17 +96,6 @@ namespace FFYP.Controllers
             return View(myProjects);
         }
 
-        public ActionResult GetBidings()
-        {
-            var user = User.Identity.GetUserId();
-            var notificationregistertime = Session["LastUpdate"] != null ? Convert.ToDateTime(Session["LastUpdate"]) : DateTime.Now;
-            RegisterComponent rc = new RegisterComponent();
-            var list = rc.GetBidings(notificationregistertime);
-            var li = list.Where(a => a.SiteUser.UserId == user).ToList();
-            Session["LastUpdate"] = DateTime.Now;
-            return PartialView("_PartialNotification", li);
-            //return Json(list, JsonRequestBehavior.AllowGet);
-        }
         public async Task<ActionResult> MyJobs()
         {
             var user = User.Identity.GetUserId();
