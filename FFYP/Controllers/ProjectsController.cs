@@ -164,5 +164,10 @@ namespace FFYP.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
+        public ActionResult OtherBids(int? id)
+        {
+            var list = db.Biding.Where(i => i.ProjectID == id).ToList();
+            return PartialView("_PartialOtherBids", list);
+        }
     }
 }

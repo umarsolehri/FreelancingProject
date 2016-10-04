@@ -21,10 +21,15 @@
         <div class="toolbar">
             <div class="uou-block-1a blog">
                 <div class="container" style="margin-bottom:9px;">
-                    <div class="search">
-                    </div>
+                    @*<div class="search">
+                        </div>*@
 
-
+                    <ul class="social">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            { Html.RenderAction("NotificationShow", "Home"); }
+                        }
+                    </ul>
                     <ul class="authentication">
                         @if (!User.Identity.IsAuthenticated)
                         {
@@ -48,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="box-shadow-for-ui">
+        <div class="box-shadow-for-ui" style="border-bottom: 1px solid #f1f1f1;">
             <div class="uou-block-2b">
                 <div class="container">
                     <nav class="nav">
@@ -69,6 +74,15 @@
         @RenderBody()
 
     </div>
+    @*<div class="uou-block-4a secondary dark">
+        <div class="container">
+            <ul class="links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+            </ul>
+            <p>Copyright © 2015 <a href="#">UOUAPPS</a>. All Rights reserved.</p>
+        </div>
+    </div>*@
     <script src="~/Scripts/jquery-2.1.3.min.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
@@ -89,8 +103,8 @@
     <script src="~/Scripts/uou-accordions.js"></script>
     <script src="~/Scripts/uou-tabs.js"></script>
     <script src="~/Scripts/select2.min.js"></script>
-    <script src="~/Scripts/owl.carousel.min.js"></script>
-    <script src="~/Scripts/gmap3.min.js"></script>
+    @*<script src="~/Scripts/owl.carousel.min.js"></script>*@
+    @*<script src="~/Scripts/gmap3.min.js"></script>*@
     <script src="~/Scripts/scripts.js"></script>
 </body>
 

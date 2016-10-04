@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BidsList>
+<section class="demo-section">
+    <h6 class="demo-section-title container">Bids Notification</h6>
+    <div class="container">
+        <ul class="uou-accordions">
+            @foreach (var item in Model)
+            {
+                <li class="active">
+                    <a href="#">@item.Project.Title </a>
+                    <div>
+                        <p>New bid on your project @item.Project.Title has been  made </p>
+                        @*@using (Html.BeginForm("BidsMarkAsRead", "Home", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(model => item.BidsListID)*@
+
+                        <a class="btn btn-primary" href="@Url.Action("BidingsList", "Bidings", new { id = item.ProjectID})"><span class="fa fa-arrow-circle-o-right">Go to Bids</span></a>
+                            <a class="btn btn-primary" href="@Url.Action("BidsMarkAsRead", "Home", new { id = item.BidsListID})"><span class="fa fa-check-circle"> Mark as Read</span></a>
+                        @*}*@
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</section>

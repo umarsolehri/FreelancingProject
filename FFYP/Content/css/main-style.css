@@ -6090,7 +6090,7 @@ p i {
 .uou-block-1a .social {
 	padding-left: 0;
 	list-style: none;
-	margin: 0 0 0 24px;
+	margin: 0 0 -9px 24px;
 	float: right;
 }
 .uou-block-1a .social li {

@@ -116,4 +116,8 @@ namespace FFYP.ViewModels
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+    public class UserID
+    {
+        public string UserId { get; set; }
+    }
 }

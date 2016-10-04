@@ -45,7 +45,12 @@ namespace FFYP.Controllers
                     ProjectID = model.ProjectID,
                     Status = "Pending"
                 };
-
+                var bidlist = new BidsList
+                {
+                    MarkasRead = false,
+                    ProjectID = bid.ProjectID
+                };
+                db.BidsList.Add(bidlist);
                 db.Biding.Add(bid);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index", "SiteUsers");
@@ -71,6 +76,12 @@ namespace FFYP.Controllers
                 SellerId = find.SiteUserID,
                 ProId = find.ProjectID
             };
+            var approveBid = new JobApproved
+            {
+                MarkasRead = false,
+                SiteUserID = find.SiteUserID
+            };
+            db.JobApproved.Add(approveBid);
             db.Job.Add(job);
             await db.SaveChangesAsync();
             return RedirectToAction("Index", "SiteUsers");

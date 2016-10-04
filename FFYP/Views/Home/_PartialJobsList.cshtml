@@ -1,0 +1,24 @@
+﻿@model IEnumerable<JobListViewModels>
+
+<section class="demo-section">
+    <h6 class="demo-section-title container">Jobs Notification</h6>
+    <div class="container">
+        <ul class="uou-accordions">
+            @foreach (var item in Model)
+            {
+                <li class="active">
+                    <a href="#">@item.Title</a>
+                    <div>
+                        <p>New bid on project @item.Title approved by @item.ApprovedBy </p>
+                        @*@using (Html.BeginForm("JobsMarkAsRead", "Home", FormMethod.Post))
+                            {
+                                @Html.HiddenFor(model => item.JobApprovedID)*@
+                        <a class="btn btn-primary" href="@Url.Action("JobsMarkAsRead", "Home", new { id = item.JobApprovedID })"><span class="fa fa-check-circle"> Read</span></a>
+                        @*}*@
+                    </div>
+
+                </li>
+            }
+        </ul>
+    </div>
+</section>

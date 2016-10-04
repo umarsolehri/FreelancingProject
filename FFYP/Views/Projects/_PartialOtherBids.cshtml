@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Biding>
+
+@foreach (var item in Model)
+{
+    <div class="media">
+        <div class="media-left">
+            <div class="inn-simi">
+                @if (item.SiteUser.imagepath != null)
+                {
+                    <img class="media-object" src="@Url.Content(item.SiteUser.imagepath)" alt="">
+                }
+            </div>
+        </div>
+        <div class="media-body">
+            @*<h5>Media heading</h5>*@
+            <p>@item.SiteUser.FullName</p>
+            <p>
+                @Html.Raw(HttpUtility.HtmlDecode(item.Description))
+            </p>
+        </div>
+    </div>
+}

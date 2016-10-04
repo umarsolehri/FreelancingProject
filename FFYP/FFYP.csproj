@@ -223,7 +223,13 @@
     <Compile Include="Migrations\201609241954195_initial.Designer.cs">
       <DependentUpon>201609241954195_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610041620579_jobsapproved and bids list.cs" />
+    <Compile Include="Migrations\201610041620579_jobsapproved and bids list.Designer.cs">
+      <DependentUpon>201610041620579_jobsapproved and bids list.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BidsList.cs" />
+    <Compile Include="Models\JobApproved.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Biding.cs" />
     <Compile Include="Models\FFYPContext.cs" />
@@ -238,6 +244,7 @@
     <Compile Include="Models\SiteUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\NotificationViewModels.cs" />
     <Compile Include="ViewModels\ProDetailViewModels.cs" />
     <Compile Include="ViewModels\UserViewModels.cs" />
   </ItemGroup>
@@ -650,6 +657,11 @@
     <Content Include="Views\Admin\UserNameDisplay.cshtml" />
     <Content Include="Views\Admin\_Partialheadbar.cshtml" />
     <Content Include="Views\SiteUsers\_PartialNotification.cshtml" />
+    <Content Include="Views\Projects\_PartialOtherBids.cshtml" />
+    <Content Include="Views\Home\_PartialNotificationShow.cshtml" />
+    <Content Include="Views\Home\Notifications.cshtml" />
+    <Content Include="Views\Home\_PartialBidsList.cshtml" />
+    <Content Include="Views\Home\_PartialJobsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\" />
@@ -663,6 +675,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609241954195_initial.resx">
       <DependentUpon>201609241954195_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041620579_jobsapproved and bids list.resx">
+      <DependentUpon>201610041620579_jobsapproved and bids list.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

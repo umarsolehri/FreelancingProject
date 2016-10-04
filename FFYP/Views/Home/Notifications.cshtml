@@ -1,0 +1,11 @@
+﻿@model UserID
+@{
+    ViewBag.Title = "Notifications";
+}
+<script src="~/Scripts/uou-accordions.js"></script>
+
+
+@{ Html.RenderAction("BidsList", "Home", new { id = Model.UserId }); }
+@{ Html.RenderAction("JobsList", "Home", new { id = Model.UserId });
+}
+

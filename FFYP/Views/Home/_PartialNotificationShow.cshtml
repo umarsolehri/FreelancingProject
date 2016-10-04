@@ -1,0 +1,8 @@
+﻿@if (ViewBag.Count == false)
+{
+<li><a href="@Url.Action("Notifications","Home")" class="fa fa-bell-slash" style="background-color: #0094ff;"></a></li>
+}
+else
+{
+    <li><a href="@Url.Action("Notifications","Home")" class="fa fa-bell" style="background-color: #ff0000;"></a></li>
+}
