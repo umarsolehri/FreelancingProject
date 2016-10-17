@@ -13,7 +13,7 @@ namespace FFYP.Models
         public string Title { get; set; }
         [DataType(DataType.Duration)]
         public string Duration { get; set; }
-        [AllowHtml]
+        [AllowHtml,Required]
         public string Description { get; set; }
         [DataType(DataType.Date)]
         public DateTime PostedDate { get; set; }

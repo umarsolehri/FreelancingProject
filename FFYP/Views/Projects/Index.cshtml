@@ -42,9 +42,11 @@
                                 <div class="listing-section">
                                     @foreach (var item in Model)
                                     {
-
+                                        if (item.Description != null)
                                         {
-                                            description = HttpUtility.HtmlDecode(item.Description).ToString().ToCharArray().Take(200).ToSystemString();
+                                            {
+                                                description = HttpUtility.HtmlDecode(item.Description).ToString().ToCharArray().Take(200).ToSystemString();
+                                            }
                                         }
                                         <div class="listing-ver-3">
                                             <div class="listing-heading">

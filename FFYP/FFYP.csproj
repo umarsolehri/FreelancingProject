@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201610041620579_jobsapproved and bids list.Designer.cs">
       <DependentUpon>201610041620579_jobsapproved and bids list.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610172253133_descriptionrequired.cs" />
+    <Compile Include="Migrations\201610172253133_descriptionrequired.Designer.cs">
+      <DependentUpon>201610172253133_descriptionrequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BidsList.cs" />
     <Compile Include="Models\JobApproved.cs" />
@@ -678,6 +682,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610041620579_jobsapproved and bids list.resx">
       <DependentUpon>201610041620579_jobsapproved and bids list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610172253133_descriptionrequired.resx">
+      <DependentUpon>201610172253133_descriptionrequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
