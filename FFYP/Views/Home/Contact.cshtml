@@ -9,21 +9,24 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="tab-content">
-                        <div id="contact">
-                            <div class="profile-main">
-                                <h3>Contact Us</h3>
-                                <div class="profile-in">
-                                    @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.ValidationSummary("", new { @class = "text-danger" })
-                                        @Html.TextBoxFor(model => model.Name, new { @placeholder = "Name" })
-                                        @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email" })
-                                        @Html.TextBoxFor(model => model.PhoneNumber, new { @placeholder = "Phone Number" })
-                                        @Html.TextAreaFor(model => model.Message, 7, 8, new { @placeholder = "Your message.." })
-                                        <button class="btn btn-primary"><span><i class="fa fa-send"></i> Send message </span></button>
-                                    }
-                                </div>
+                        @*<div id="contact">*@
+                        <div class="profile-main">
+                            <h3>Contact Us</h3>
+                            <div class="profile-in">
+                                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.Name, new { @placeholder = "Name" })
+                                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+                                    @Html.TextBoxFor(model => model.Email, new { @type = "email", @placeholder = "Email" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @placeholder = "Phone Number" })
+                                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                                    @Html.TextAreaFor(model => model.Message, 7, 8, new { @placeholder = "Your message.." })
+                                    <button class="btn btn-primary"><span><i class="fa fa-send"></i> Send message </span></button>
+                                }
                             </div>
                         </div>
                     </div>

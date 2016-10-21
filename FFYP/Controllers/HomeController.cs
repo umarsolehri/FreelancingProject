@@ -66,7 +66,7 @@ namespace FFYP.Controllers
                     var credential = new NetworkCredential
                     {
                         UserName = "demomailpro@gmail.com",
-                        Password = "11223344aa"
+                        Password = "Az@123456"
                     };
                     smtp.Credentials = credential;
                     smtp.Host = "smtp.gmail.com";
