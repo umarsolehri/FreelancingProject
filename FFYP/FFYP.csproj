@@ -295,6 +295,7 @@
     <Content Include="Content\images\company-thumb.jpg" />
     <Content Include="Content\images\copywrite-block-img1.png" />
     <Content Include="Content\images\footer-map-bg.png" />
+    <Content Include="Content\images\front.jpg" />
     <Content Include="Content\images\icon-prifile-1.png" />
     <Content Include="Content\images\icon-prifile-2.png" />
     <Content Include="Content\images\icon-prifile-3.png" />
