@@ -61,14 +61,26 @@
                                         }
                                         if (User.Identity.IsAuthenticated)
                                         {
-                                            if (Model.Status == false)
-                                            {
-                                                <button type="submit" style="margin-left:80px; border:none; background:#0099ff;
-                                                border-radius:30px;padding: 8px 30px; color: #fff; float:left;
-                                                font-size: 14px; transition: all 0.3s;">
-                                                    Submit Purposal
-                                                </button>
-                                            }
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-5">
+                                                        @if (Model.Status == false)
+                                                        {
+                                                            <button type="submit" style="background: rgb(0, 153, 255) none repeat scroll 0% 0%; color: rgb(255, 255, 255); float: left; font-size: 14px; transition: all 0.3s ease 0s; border: medium none; padding: 4px 9px; border-radius: 9px;">
+                                                                Submit
+                                                            </button>
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        @if (ViewBag.FavStatus == false)
+                                                        {
+                                                            <a href="@Url.Action("AddFav", "Projects", new { id = Model.ProjectID })" style="border: medium none; background: rgb(0, 153, 255) none repeat scroll 0% 0%; color: rgb(255, 255, 255); transition: all 0.3s ease 0s; border-radius: 9px; padding: 4px 9px; float: left; font-size: 12px;">
+                                                                <i class="fa fa-plus"></i> Favirout
+                                                            </a>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
                                         }
                                     }
                                 </li>

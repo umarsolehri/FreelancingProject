@@ -203,7 +203,7 @@ namespace FFYP.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
                 ViewBag.Message = "Password Changed Successfully";
-                return ViewBag();
+                return View();
             }
             AddErrors(result);
             return View(model);

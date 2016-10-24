@@ -231,8 +231,21 @@
     <Compile Include="Migrations\201610172253133_descriptionrequired.Designer.cs">
       <DependentUpon>201610172253133_descriptionrequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610230856553_sesemsteradd.cs" />
+    <Compile Include="Migrations\201610230856553_sesemsteradd.Designer.cs">
+      <DependentUpon>201610230856553_sesemsteradd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610230900304_removesemester.cs" />
+    <Compile Include="Migrations\201610230900304_removesemester.Designer.cs">
+      <DependentUpon>201610230900304_removesemester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610241618115_addfacpro.cs" />
+    <Compile Include="Migrations\201610241618115_addfacpro.Designer.cs">
+      <DependentUpon>201610241618115_addfacpro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BidsList.cs" />
+    <Compile Include="Models\FavPro.cs" />
     <Compile Include="Models\JobApproved.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Biding.cs" />
@@ -287,6 +300,7 @@
     <Content Include="Content\images\icon-prifile-3.png" />
     <Content Include="Content\images\icon-ver.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logofree.jpg" />
     <Content Include="Content\images\main-bg.jpg" />
     <Content Include="Content\images\med-avatar.jpg" />
     <Content Include="Content\images\member-1.png" />
@@ -666,6 +680,7 @@
     <Content Include="Views\Home\Notifications.cshtml" />
     <Content Include="Views\Home\_PartialBidsList.cshtml" />
     <Content Include="Views\Home\_PartialJobsList.cshtml" />
+    <Content Include="Views\Projects\MyFavList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\" />
@@ -685,6 +700,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610172253133_descriptionrequired.resx">
       <DependentUpon>201610172253133_descriptionrequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610230856553_sesemsteradd.resx">
+      <DependentUpon>201610230856553_sesemsteradd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610230900304_removesemester.resx">
+      <DependentUpon>201610230900304_removesemester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610241618115_addfacpro.resx">
+      <DependentUpon>201610241618115_addfacpro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

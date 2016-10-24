@@ -17,6 +17,7 @@ namespace FFYP.Models
         public DbSet<Biding> Biding { get; set; }
         public DbSet<BidsList> BidsList { get; set; }
         public DbSet<JobApproved> JobApproved { get; set; }
+        public DbSet<FavPro> FavPro { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

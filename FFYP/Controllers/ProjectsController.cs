@@ -63,7 +63,11 @@ namespace FFYP.Controllers
                 {
                     check = await db.Biding.Where(b => b.SiteUserID == siteUser.SiteUserID && b.ProjectID == id).CountAsync();
                 }
-
+                var favstatus = await db.FavPro.Where(u => u.Userid == user).FirstOrDefaultAsync();
+                if (favstatus == null)
+                {
+                    ViewBag.FavStatus = false;
+                }
                 var bid = new BidViewModels();
                 if (check > 0)
                 {
@@ -125,7 +129,7 @@ namespace FFYP.Controllers
             return View(project);
         }
 
-        [HttpPost,ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Edit(Project project)
         {
             if (ModelState.IsValid)
@@ -168,6 +172,33 @@ namespace FFYP.Controllers
         {
             var list = db.Biding.Where(i => i.ProjectID == id).ToList();
             return PartialView("_PartialOtherBids", list);
+        }
+
+
+        public async Task<ActionResult> AddFav(int id)
+        {
+            //var find = await db.FavPro.Where(i => i.ProjectID == id).FirstOrDefaultAsync();
+            var add = new FavPro
+            {
+                ProjectID = id,
+                Userid = User.Identity.GetUserId()
+            };
+            db.FavPro.Add(add);
+            await db.SaveChangesAsync();
+            return RedirectToAction("MyFavList", "Projects");
+        }
+        public async Task<ActionResult> MyFavList()
+        {
+            var user = User.Identity.GetUserId();
+            var list = await db.FavPro.Where(u => u.Userid == user).ToListAsync();
+            return View(list);
+        }
+        public async Task<ActionResult> RemoveFav(int id)
+        {
+            var find = await db.FavPro.Where(i => i.FavProID == id).FirstOrDefaultAsync();
+            db.FavPro.Remove(find);
+            await db.SaveChangesAsync();
+            return RedirectToAction("MyFavList", "Projects");
         }
     }
 }

@@ -22,13 +22,13 @@
             <div class="uou-block-1a blog">
                 <div class="container" style="margin-bottom:9px;">
                     @*<div class="search">
-                        </div>*@
-
+                        </div>*@                    
                     <ul class="social">
                         @if (User.Identity.IsAuthenticated)
                         {
                             { Html.RenderAction("NotificationShow", "Home"); }
                         }
+                        <li><a href="@Url.Action("MyFavList","Projects")" class="fa fa-heart" style="background-color: #f10dd0;"></a></li>
                     </ul>
                     <ul class="authentication">
                         @if (!User.Identity.IsAuthenticated)
@@ -55,7 +55,8 @@
         </div>
         <div class="box-shadow-for-ui" style="border-bottom: 1px solid #f1f1f1;">
             <div class="uou-block-2b">
-                <div class="container">
+                <div class="container" style="margin-bottom: -16px; margin-top: -16px;">
+                    <a href="#"><img src="~/Content/images/logofree.jpg" alt="" style="width: 10%;"></a> <a href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
                     <nav class="nav">
                         <ul class="sf-menu">
                             <li class="active"><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>

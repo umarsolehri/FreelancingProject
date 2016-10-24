@@ -1,0 +1,24 @@
+﻿@model IEnumerable<FavPro>
+@{
+    ViewBag.Title = "Favorite Project";
+}
+
+
+<section class="demo-section">
+    <h6 class="demo-section-title container">Favorite Projects</h6>
+    <div class="container">
+        <ul class="uou-accordions">
+            @foreach (var item in Model)
+            {
+                <li class="active">
+                    <a href="#">@item.Project.Title </a>
+                    <div>
+                        <a class="btn btn-primary" href="@Url.Action("ProDetails", "Projects", new { id = item.ProjectID})"><span class="fa fa-arrow-circle-o-right">Read Details</span></a>
+                        <a class="btn btn-primary" href="@Url.Action("RemoveFav", "Projects", new { id = item.FavProID})"><span class="fa fa-check-circle"> Remove favorite</span></a>
+                        @*}*@
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</section>

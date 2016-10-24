@@ -65,9 +65,12 @@
                                                     </p>
                                                     <h6 class="title-tags">Skills required:</h6>
                                                     <ul class="tags list-inline">
-                                                        @foreach (var skill in item.SkillsRequired.ToString().Split(','))
+                                                        @if (item.SkillsRequired != null)
                                                         {
+                                                            foreach (var skill in item.SkillsRequired.ToString().Split(','))
+                                                            {
                                                             <li><a href="">@skill</a></li>
+                                                            }
                                                         }
                                                     </ul>
                                                 </div>
