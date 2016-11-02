@@ -22,7 +22,8 @@
                                                     <th>Project Title</th>
                                                     <th>Location</th>
                                                     <th>Posted Date</th>
-                                                    <th><span><i class="fa fa-remove"></i></span></th>
+                                                    <th>Status</th>
+                                                    <th><span><i class="fa fa-check"></i></span><span>|</span><span><i class="fa fa-remove"></i></span></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -33,7 +34,12 @@
                                                         <td>@item.Title</td>
                                                         <td>@item.Location</td>
                                                         <td>@item.PostedDate.ToString("d")</td>
-                                                        <th><a href="@Url.Action("Delete", "Projects", new { id = item.ProjectID })"><span><i class="fa fa-remove"></i></span></a></th>
+                                                        <td>@item.ProStatus</td>
+                                                        <th>
+                                                            <a href="@Url.Action("ApprovePro", "Projects", new { id = item.ProjectID })"><span><i class="fa fa-check" title="Accept"></i></span></a>
+                                                            <span>|</span>
+                                                            <a href="@Url.Action("Delete", "Projects", new { id = item.ProjectID })"><span><i class="fa fa-remove" title="Reject/Delete"></i></span></a>
+                                                        </th>
                                                     </tr>
                                                 }
                                             </tbody>

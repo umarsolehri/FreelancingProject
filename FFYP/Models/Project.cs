@@ -17,6 +17,7 @@ namespace FFYP.Models
         public string Description { get; set; }
         [DataType(DataType.Date)]
         public DateTime PostedDate { get; set; }
+        public string ProStatus { get; set; }
 
         public string Location { get; set; }
         [Display(Name ="Required Skills")]

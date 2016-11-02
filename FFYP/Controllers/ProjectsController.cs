@@ -30,12 +30,12 @@ namespace FFYP.Controllers
             var siteUser = await db.SiteUser.Where(u => u.UserId == user).FirstOrDefaultAsync();
             if (search != null)
             {
-                var list = await db.Project.OrderByDescending(o => o.ProjectID).Where(p => p.SiteUserID != siteUser.SiteUserID && p.Title.Contains(search)).ToPagedListAsync(page ?? 1, 10);
+                var list = await db.Project.OrderByDescending(o => o.ProjectID).Where(p => p.SiteUserID != siteUser.SiteUserID && p.Title.Contains(search) && p.ProStatus == "Accepted").ToPagedListAsync(page ?? 1, 10);
                 return View(list);
             }
             else
             {
-                var list = await db.Project.OrderByDescending(o => o.ProjectID).Where(p => p.SiteUserID != siteUser.SiteUserID).ToPagedListAsync(page ?? 1, 10);
+                var list = await db.Project.OrderByDescending(o => o.ProjectID).Where(p => p.SiteUserID != siteUser.SiteUserID && p.ProStatus == "Accepted").ToPagedListAsync(page ?? 1, 10);
                 return View(list);
             }
 
@@ -103,6 +103,7 @@ namespace FFYP.Controllers
                 project.SiteUserID = siteUser.SiteUserID;
                 project.Description = HttpUtility.HtmlEncode(project.Description);
                 project.PostedDate = DateTime.Now.Date;
+                project.ProStatus = "Pending";
                 db.Project.Add(project);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index", "SiteUsers");
@@ -199,6 +200,15 @@ namespace FFYP.Controllers
             db.FavPro.Remove(find);
             await db.SaveChangesAsync();
             return RedirectToAction("MyFavList", "Projects");
+        }
+
+        public async Task<ActionResult> ApprovePro(int id)
+        {
+            var find = await db.Project.FindAsync(id);
+            find.ProStatus = "Accepted";
+            db.Entry(find).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index", "Admin");
         }
     }
 }
