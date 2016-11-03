@@ -51,7 +51,7 @@
                                             @Html.TextBoxFor(model => model.CareerLevel, new { @placeholder = "Career Level" })
                                             @Html.ValidationMessageFor(model => model.CareerLevel, "", new { @class = "text-danger" })
 
-                                            @Html.TextBoxFor(model => model.Email, new { @readonly="readonly",@placeholder = "Email Address" })
+                                            @Html.TextBoxFor(model => model.Email, new { @readonly = "readonly", @placeholder = "Email Address" })
                                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
                                             @Html.TextBoxFor(model => model.Website, new { @placeholder = "Website url" })
@@ -60,7 +60,10 @@
                                             @Html.TextBoxFor(model => model.PhoneNumber, new { @placeholder = "Phone Number" })
                                             @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
 
-                                            @Html.TextAreaFor(model => model.Adddress,3,7, new { @placeholder = "Address" })
+                                            @Html.TextBoxFor(model => model.IDCard, new { @placeholder = "ID Card" })
+                                            @Html.ValidationMessageFor(model => model.IDCard, "", new { @class = "text-danger" })
+
+                                            @Html.TextAreaFor(model => model.Adddress, 3, 7, new { @placeholder = "Address" })
                                             @Html.ValidationMessageFor(model => model.Adddress, "", new { @class = "text-danger" })
 
                                             @Html.TextAreaFor(model => model.Description, 4, 7, new { @placeholder = "Description" })

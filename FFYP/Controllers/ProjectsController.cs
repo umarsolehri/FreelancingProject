@@ -174,7 +174,6 @@ namespace FFYP.Controllers
             return PartialView("_PartialOtherBids", list);
         }
 
-
         public async Task<ActionResult> AddFav(int id)
         {
             //var find = await db.FavPro.Where(i => i.ProjectID == id).FirstOrDefaultAsync();

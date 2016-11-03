@@ -35,6 +35,7 @@ namespace FFYP.Models
         public string UserId { get; set; }
         [DataType(DataType.MultilineText)]
         public string Adddress { get; set; }
+        public string IDCard { get; set; }
         public string ImageName { get; set; }
         public string imagepath { get; set; }
         [DataType(DataType.MultilineText)]

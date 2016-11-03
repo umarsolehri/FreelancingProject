@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Project>
+@{
+    ViewBag.Title = "Payments";
+    int no = 0;
+}
+
+<div class="compny-profile">
+    @{ Html.RenderAction("UserNameDisplay", "SiteUsers"); }
+    <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+        <div class="container">
+            <div class="row">
+                @{ Html.RenderPartial("_Partialheadbar"); }
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div id="profile" class="tab-pane fade in active">
+                            <div class="row">
+                                <section class="demo-section">
+                                    <div class="container">
+                                        <table class="table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Title</th>
+                                                    <th>Status</th>
+                                                    <th>Details</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    {
+                                                        no++;
+                                                    }
+                                                    <tr>
+                                                        <td>@no</td>
+                                                        <td>@item.Title</td>
+                                                        <td>@item.ProjectStatus</td>
+                                                        <th><a href="@Url.Action("GoToDetails", "SiteUsers", new { id = item.ProjectID})">Go To Details</a></th>
+                                                    </tr>
+                                                }
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

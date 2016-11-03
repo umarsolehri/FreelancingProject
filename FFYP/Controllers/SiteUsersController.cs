@@ -137,5 +137,45 @@ namespace FFYP.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        public async Task<ActionResult> MyProPayment()
+        {
+            var user = User.Identity.GetUserId();
+            var findPro = await db.Project.Where(u => u.SiteUser.UserId == user).ToListAsync();
+            return View(findPro);
+        }
+
+
+        public async Task<ActionResult> GoToDetails(int id)
+        {
+            var findpro = await db.Payment.Where(i => i.ProjectID == id).FirstOrDefaultAsync();
+            var jobApprove = await db.Biding.Where(p => p.ProjectID == id && p.Status == "Approved").FirstOrDefaultAsync();
+            var value = new PaymentViewModels
+            {
+                Name = jobApprove.SiteUser.FirstName + " " + jobApprove.SiteUser.LastName,
+                RecieverID = jobApprove.SiteUserID.ToString(),
+                ProjectId = id,
+                SenderID = jobApprove.Project.SiteUserID,
+                MobileNumber = jobApprove.SiteUser.PhoneNumber,
+                IDCard = jobApprove.SiteUser.IDCard
+            };
+            return View(value);
+        }
+        [HttpPost]
+        public async Task<ActionResult> GoToDetails(PaymentViewModels model,string Amount, string PaymentMethod)
+        {
+            var save = new Payment
+            {
+                Amount = model.Amount,
+                PayedTo = model.RecieverID,
+                PaymentMethod = PaymentMethod,
+                ProjectID = model.ProjectId
+            };
+            db.Payment.Add(save);
+            await db.SaveChangesAsync();
+            ModelState.AddModelError("", "Payment Succenfully Addedd");
+            return View(model);
+        }
     }
 }

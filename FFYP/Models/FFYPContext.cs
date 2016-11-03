@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace FFYP.Models
 {
-    public class FFYPContext:IdentityDbContext<ApplicationUser>
+    public class FFYPContext : IdentityDbContext<ApplicationUser>
     {
         public FFYPContext() : base("name=FFYPContext", throwIfV1Schema: false) { }
 
@@ -18,6 +18,7 @@ namespace FFYP.Models
         public DbSet<BidsList> BidsList { get; set; }
         public DbSet<JobApproved> JobApproved { get; set; }
         public DbSet<FavPro> FavPro { get; set; }
+        public DbSet<Payment> Payment { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,18 +27,13 @@ namespace FFYP.Models
             modelBuilder.Entity<Biding>()
                 .HasKey(p => p.BidingID)
                 .HasRequired(p => p.SiteUser)
-                .WithMany(p=>p.Biding)
-                .HasForeignKey(p=>p.SiteUserID);
+                .WithMany(p => p.Biding)
+                .HasForeignKey(p => p.SiteUserID);
             modelBuilder.Entity<Biding>()
                 .HasKey(p => p.BidingID)
                 .HasRequired(p => p.Project)
                 .WithMany(p => p.Biding)
                 .HasForeignKey(p => p.ProjectID).WillCascadeOnDelete(false);
-            
-
-
-
-
         }
 
         public static FFYPContext Create()
