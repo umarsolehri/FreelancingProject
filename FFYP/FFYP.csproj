@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201611021536327_prostatus.Designer.cs">
       <DependentUpon>201611021536327_prostatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611022106132_addbidprice.cs" />
+    <Compile Include="Migrations\201611022106132_addbidprice.Designer.cs">
+      <DependentUpon>201611022106132_addbidprice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BidsList.cs" />
     <Compile Include="Models\FavPro.cs" />
@@ -717,6 +721,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611021536327_prostatus.resx">
       <DependentUpon>201611021536327_prostatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611022106132_addbidprice.resx">
+      <DependentUpon>201611022106132_addbidprice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

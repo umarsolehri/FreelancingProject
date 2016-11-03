@@ -3,6 +3,28 @@
 @{
     ViewBag.Title = "Bid List";
 }
+<div class="search-pro">
+    <div class="map-search">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("BidingsList", "Bidings", FormMethod.Get))
+                    {
+                        <div class="map-search-fields">
+                            <div class="field custom-select-box" style="position: relative;margin-right: 18px;width: 95%;float: left;display: inline-block;">
+                                @Html.TextBox("search", null, new { @placeholder = "Search Bid by Price" })
+                            </div>
+                        </div>
+                        <div class="search-button" style="margin-right: 60px;">
+                            <button type="submit"><span> <i class="fa fa-search"></i> Search</span></button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="compny-profile">
     <div class="profile-company-content" data-bg-color="f5f5f5">
         <div class="container">
@@ -30,37 +52,41 @@
 
                     <div class="col-md-4">
                         <div class="sidebar">
-                            <h5 class="main-title" >Bid made by</h5>
+                            <h5 class="main-title">Bid made by</h5>
                             <div class="sidebar-information">
                                 <ul class="single-category">
                                     <li class="row">
                                         <h6 class="title col-xs-6">Full name</h6>
                                         <span class="subtitle col-xs-6">@item.SiteUser.FullName</span>
                                     </li>
-                                    <li class="row">
-                                        <h6 class="title col-xs-6">Email</h6>
-                                        <span class="subtitle col-xs-6">@item.SiteUser.Email</span>
-                                    </li>
-                                    <li class="row">
-                                        <h6 class="title col-xs-6">Contact No</h6>
-                                        <span class="subtitle col-xs-6">@item.SiteUser.PhoneNumber</span>
-                                    </li>
+                                    @*<li class="row">
+                                            <h6 class="title col-xs-6">Email</h6>
+                                            <span class="subtitle col-xs-6">@item.SiteUser.Email</span>
+                                        </li>*@
+                                    @*<li class="row">
+                                            <h6 class="title col-xs-6">Contact No</h6>
+                                            <span class="subtitle col-xs-6">@item.SiteUser.PhoneNumber</span>
+                                        </li>*@
                                     <li class="row">
                                         <h6 class="title col-xs-6">Career Level</h6>
                                         <span class="subtitle col-xs-6">@item.SiteUser.CareerLevel</span>
                                     </li>
-                                    <li class="row">
+                                    @*<li class="row">
                                         <h6 class="title col-xs-6">Degree</h6>
                                         <span class="subtitle col-xs-6">@item.SiteUser.Degree</span>
-                                    </li>
+                                    </li>*@
                                     <li class="row">
                                         <h6 class="title col-xs-6">Experiance</h6>
                                         <span class="subtitle col-xs-6">@item.SiteUser.Experiance</span>
                                     </li>
                                     <li class="row">
+                                        <h6 class="title col-xs-6">Bid Price</h6>
+                                        <span class="subtitle col-xs-6">@item.BidPrice</span>
+                                    </li>
+                                    @*<li class="row">
                                         <h6 class="title col-xs-6">Website</h6>
                                         <span class="subtitle col-xs-6">@item.SiteUser.Website</span>
-                                    </li>
+                                    </li>*@
                                     <li class="row">
                                         <br />
 

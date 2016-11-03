@@ -28,7 +28,7 @@ namespace FFYP.Controllers
         {
             var user = User.Identity.GetUserId();
             var siteUser = await db.SiteUser.Where(u => u.UserId == user).FirstOrDefaultAsync();
-            if (search != null)
+            if (search != null && search != "")
             {
                 var list = await db.Project.OrderByDescending(o => o.ProjectID).Where(p => p.SiteUserID != siteUser.SiteUserID && p.Title.Contains(search) && p.ProStatus == "Accepted").ToPagedListAsync(page ?? 1, 10);
                 return View(list);
@@ -38,7 +38,6 @@ namespace FFYP.Controllers
                 var list = await db.Project.OrderByDescending(o => o.ProjectID).Where(p => p.SiteUserID != siteUser.SiteUserID && p.ProStatus == "Accepted").ToPagedListAsync(page ?? 1, 10);
                 return View(list);
             }
-
         }
 
         public async Task<ActionResult> ProDetails(int? id)

@@ -16,7 +16,10 @@ namespace FFYP.ViewModels
         public string BidDescription { get; set; }
         [AllowHtml]
         public string ProDescription { get; set; }
-        
+
+        //[RegularExpression("^([0-9]){9,12}$", ErrorMessage = "Numbers Only with length 9-12")]
+        public int BidPrice { get; set; }
+
         public bool Status { get; set; }
         public string ProTitle { get; set; }
         public string Location { get; set; }

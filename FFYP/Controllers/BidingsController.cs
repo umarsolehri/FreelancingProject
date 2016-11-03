@@ -30,7 +30,7 @@ namespace FFYP.Controllers
             return View(BidViewModel);
         }
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<ActionResult> SubmitPurposal(BidViewModels model, string a)
+        public async Task<ActionResult> SubmitPurposal(BidViewModels model, string bidPrice)
         {
 
             if (ModelState.IsValid)
@@ -39,6 +39,7 @@ namespace FFYP.Controllers
                 var siteUser = await db.SiteUser.Where(s => s.UserId == user).FirstOrDefaultAsync();
                 var bid = new Biding
                 {
+                    BidPrice= Convert.ToInt32(bidPrice),
                     BidingDate = DateTime.Now.Date,
                     SiteUserID = siteUser.SiteUserID,
                     Description = HttpUtility.HtmlEncode(model.BidDescription),
@@ -57,11 +58,20 @@ namespace FFYP.Controllers
             }
             return View(model);
         }
-        public async Task<ActionResult> BidingsList(int? id)
+        public async Task<ActionResult> BidingsList(int? id, string search)
         {
-            var list = await db.Biding.Where(b => b.ProjectID == id).ToListAsync();
-            ViewBag.check = db.Biding.Where(p => p.ProjectID == id).Any(p => p.Status == "Approved");
-            return View(list);
+            if (search != null && search != "")
+            {
+                var list = await db.Biding.Where(b => b.ProjectID == id && b.BidPrice.ToString() == search).ToListAsync();
+                ViewBag.check = db.Biding.Where(p => p.ProjectID == id).Any(p => p.Status == "Approved");
+                return View(list);
+            }
+            else
+            {
+                var list = await db.Biding.Where(b => b.ProjectID == id).ToListAsync();
+                ViewBag.check = db.Biding.Where(p => p.ProjectID == id).Any(p => p.Status == "Approved");
+                return View(list);
+            }
         }
 
         public async Task<ActionResult> Approvebid(int? id)

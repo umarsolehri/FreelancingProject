@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,7 @@ namespace FFYP.Models
         [AllowHtml]
         public string Description { get; set; }
         public int SiteUserID { get; set; }
+        public int BidPrice { get; set; }
         public virtual SiteUser SiteUser { get; set; }
         public string Status { get; set; }
         public int ProjectID { get; set; }
